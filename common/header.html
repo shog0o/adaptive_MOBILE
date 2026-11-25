@@ -1,0 +1,96 @@
+            <div class="header_top">
+                <h1 class="logo">
+                    <a href="./index.html" aria-label="금호건설 홈">
+                        <span class="hidden">금호건설</span>
+                        <img src="./images/main/header_logo.png" alt="">
+                    </a>
+                </h1>
+
+                <!-- 선생님 예제 방식: 이미지 대신 글자로 표시하는 임시 로고
+                위의 이미지 로고 h1을 주석 처리한 뒤 아래 주석을 해제하면 비교할 수 있습니다.
+                <h1 class="logo">
+                    <a href="./index.html">로고</a>
+                </h1>
+                -->
+                <a class="menu_ham" href="#gnb" aria-controls="gnb" aria-expanded="false">
+                    <span class="hidden">메뉴열기</span>
+                    <!-- 원본 ham7 SVG: active 상태는 공통 메뉴 JS에서 함께 변경한다. -->
+                    <svg class="ham hamRotate ham7" viewBox="0 0 100 100" width="80" aria-hidden="true">
+                        <path
+                            class="line top"
+                            d="m 70,33 h -40 c 0,0 -6,1.368796 -6,8.5 0,7.131204 6,8.5013 6,8.5013 l 20,-0.0013"
+                        ></path>
+                        <path
+                            class="line middle"
+                            d="m 70,50 h -40"
+                        ></path>
+                        <path
+                            class="line bottom"
+                            d="m 69.575405,67.073826 h -40 c -5.592752,0 -6.873604,-9.348582 1.371031,-9.348582 8.244634,0 19.053564,21.797129 19.053564,12.274756 l 0,-40"
+                        ></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="modal" aria-hidden="true"></div>
+            <nav id="gnb" aria-hidden="true">
+                <h2 class="hidden">글로벌네비게이션영역</h2>
+                <div class="gnb_header">
+                    <a class="gnb_logo" href="./index.html" aria-label="금호건설 홈"><img src="./images/main/header_logo.png" alt=""></a>
+                    <a class="gnb_close" href="#" aria-label="전체 메뉴 닫기"><span aria-hidden="true">×</span></a>
+                </div>
+                <div class="gnb_account">
+                    <p>금호건설에 오신 것을 환영합니다.</p>
+                    <ul class="top_menu">
+                        <li><a href="./login/login.html">로그인</a></li>
+                        <li><a href="./member/member_check.html">회원가입</a></li>
+                    </ul>
+                </div>
+                <form class="gnb_search" role="search">
+                    <label class="hidden" for="gnb_keyword">메뉴 검색</label>
+                    <input id="gnb_keyword" type="search" placeholder="메뉴를 검색해보세요.">
+                    <button type="submit" aria-label="메뉴 검색">
+                        <span aria-hidden="true">⌕</span>
+                    </button>
+                </form>
+                <ul class="main_menu">
+                    <li class="depth1 active">
+                        <h3><a href="#" aria-expanded="true">회사소개</a></h3>
+                        <ul>
+                            <li><a href="./sub1_1.html">기업소개</a></li>
+                            <li><a href="./sub1_2.html">연혁</a></li>
+                            <li><a href="./sub1_3.html">기술혁신</a></li>
+                            <li><a href="./sub1_4.html">오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li class="depth1">
+                        <h3><a href="#" aria-expanded="false">사업분야</a></h3>
+                        <ul>
+                            <li><a href="./sub2_1.html">건축사업</a></li>
+                            <li><a href="./sub2_2.html">토목사업</a></li>
+                            <li><a href="./sub2_3.html">주택사업</a></li>
+                            <li><a href="./sub2_4.html">사업실적</a></li>
+                        </ul>
+                    </li>
+                    <li class="depth1">
+                        <h3><a href="#" aria-expanded="false">아테라</a></h3>
+                        <ul>
+                            <li><a href="./sub3_1.html">브랜드 스토리</a></li>
+                            <li><a href="./sub3_2.html">단지 정보</a></li>
+                            <li><a href="./sub3_3.html">분양 정보</a></li>
+                        </ul>
+                    </li>
+                    <li class="depth1 last">
+                        <h3><a href="#" aria-expanded="false">인재채용</a></h3>
+                        <ul>
+                            <li><a href="./sub4_1.html">복리후생</a></li>
+                            <li><a href="./sub4_2.html">채용프로세스</a></li>
+                            <li><a href="./sub4_3.html">직무소개</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="gnb_empty">검색 결과가 없습니다.</p>
+                <ul class="gnb_policy">
+                    <li><a href="#privacyPolicyText" aria-haspopup="dialog" aria-controls="footerPolicyModal">개인정보처리방침</a></li>
+                    <li><a href="#emailPolicyText" aria-haspopup="dialog" aria-controls="footerPolicyModal">이메일무단수집거부</a></li>
+                </ul>
+            </nav>

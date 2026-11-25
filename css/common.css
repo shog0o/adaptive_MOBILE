@@ -1,0 +1,710 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* font-family: "Noto Sans KR", sans-serif; */
+/* font-family: "Inter", sans-serif; */
+
+/* css variable */
+:root{
+    /* === Font Family === */
+    --font-family-kr: "Noto Sans KR", sans-serif;
+    --font-family-en: "Inter", sans-serif;
+
+    /* === Font Size === */
+
+    /* Display */
+    --font-display-large-size: 2.25rem;     /* 36px */
+    --font-display-medium-size: 2rem;        /* 32px */
+    --font-display-small-size: 1.75rem;     /* 28px */
+    --font-display-xsmall-size: 1.25rem;    /* 20px */
+
+    /* Heading */
+    --font-h2-size: 2rem;                   /* 32px */
+    --font-h3-size: 1.75rem;                /* 28px */
+    --font-h4-size: 1.5rem;                 /* 24px */
+    --font-h5-size: 1.25rem;                /* 20px */
+    --font-h6-size: 1.125rem;               /* 18px */
+
+    /* Body */
+    --font-body-xlarge-size: 1.25rem;      /* 20px */
+    --font-body-large-size: 1.125rem;     /* 18px */
+    --font-body-medium-size: 1rem;          /* 16px */
+    --font-body-small-size: 0.88rem;        /* 14px */
+
+    /* Label */
+    --font-label-large-size: 1rem;         /* 16px */
+    --font-label-medium-size: 0.9375rem;    /* 15px */
+    --font-label-small-size: 0.875rem;     /* 14px */
+
+    /* Navigation */
+    --font-navigation-title-size: 1.125rem; /* 18px */
+    --font-navigation-depth-size: 1rem;     /* 16px */
+
+    /* === Main Color === */
+    --color-main-01: #ED1C24;
+    --color-main-02: #454A51;
+
+    /* === Point Color === */
+    --color-point-01: #242A5C;
+    --color-point-02: #F47F3F;
+    --color-point-03: #C1DAF2;
+    --color-point-04: #FAEADB;
+
+    /* === Sub Color === */
+    --color-sub-01: #f4f4f4;
+    --color-sub-02: #FFF8F8;
+
+    /* === Font Color === */
+    --color-font-01: #333333;
+    --color-font-02: #666666;
+    --color-font-03: #999999;
+
+    /* === Grayscale === */
+    --color-white: #FFFFFF;
+    --color-light-gray: #CCCCCC;
+    --color-dark-gray: #3D3D3D;
+    --color-black: #000000;
+}
+
+/* 모바일 코딩 필수 공통영역 */
+* {
+ margin:0;
+ padding:0;
+ -webkit-text-size-adjust:none; }
+html{font-size: 16px;}
+body {
+    font-family: var(--font-family-kr);
+    color: var(--color-font-01);
+    letter-spacing: -0.01rem;
+    line-height: 1.6;
+
+}
+img, fieldset { border:0; vertical-align:top }
+ul, ol, li, dl { list-style:none; }
+h1, h2, h3, h4, h5, h6 {
+ font-size:100%;
+ font-weight:normal; }
+hr { display:none; }
+a { color:#333; text-decoration: none; display: block; }
+em, i, address {
+ font-style:normal;
+ font-weight:normal; }
+legend, caption {
+ display:none;
+ clear:both; }
+input, textarea, select, button, table {
+ font-size:inherit;
+ font-family:inherit;
+ line-height:inherit; }
+section, nav, article, aside, hgroup, header, footer { display:block }
+textarea, input {
+ border-radius:1px;}
+textarea { resize:none; }
+label { cursor:pointer; }
+table{border-collapse: collapse;}
+.hidden,#skipNav{display: block; position: absolute; left:-1000%;top:0; width: 1px; height: 1px; overflow: hidden; color: #fff}
+
+/* 스플래시 배경과 이동할 로고 */
+
+#splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+#splash-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-white);
+  transition: opacity .35s;
+}
+
+.splash-logo {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: -61px;
+  width: 184px;
+  height: auto;
+}
+
+
+
+/* 로고가 헤더로 이동하는 동안 흰 배경을 서서히 지운다. */
+
+#splash-screen.fade-out::before {
+  opacity: 0;
+}
+
+/* 전체 공통 */
+#wrap{ width:100%; position: relative;  overflow:hidden;}
+
+/* 헤더공통 */
+#headerArea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  border-bottom: 1px solid transparent;
+}
+
+#headerArea .header_top {
+  position: relative;
+  z-index: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: var(--color-white);
+}
+
+#headerArea .logo a,
+#headerArea .logo img {
+  display: block;
+  width: 99px;
+}
+
+/* 선생님 예제 방식: 글자로 만든 임시 로고
+   위의 이미지 로고 CSS를 주석 처리하고 아래 주석을 해제하면 비교할 수 있습니다.
+
+#headerArea h1 {
+  font-size: 30px;
+}
+
+#headerArea h1 a {
+  display: block;
+  padding: 20px;
+  color: #333;
+  text-decoration: none;
+}
+*/
+
+/* 원본 ham7 SVG가 직접 회전하며 X로 바뀐다. */
+#headerArea .menu_ham {
+  position: relative;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+#headerArea .ham {
+  display: block;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: transform .4s;
+}
+
+#headerArea .ham .line {
+  fill: none;
+  stroke: var(--color-font-01);
+  stroke-width: 5.5;
+  stroke-linecap: round;
+  transition: stroke-dasharray .4s, stroke-dashoffset .4s;
+}
+
+#headerArea .hamRotate.active,
+#headerArea.mn_open .hamRotate {
+  transform: rotate(45deg);
+}
+
+/* 원본 40에서 1만큼 늘려 점선 끝이 직선·곡선 경계에 정확히 걸리지 않게 보정한다.
+   간격은 1만큼 줄여 전체 점선 주기는 원본과 같게 유지한다. Safari 실기기 확인이 필요하다. */
+#headerArea .ham7 .top {
+    stroke-dasharray: 39 83;
+}
+
+#headerArea .ham7 .middle {
+  stroke-dasharray: 40 111;
+}
+
+#headerArea .ham7 .bottom {
+    stroke-dasharray: 39 162;
+}
+
+#headerArea .ham7.active .top,
+#headerArea.mn_open .ham7 .top {
+  stroke-dasharray: 17 82;
+  stroke-dashoffset: -62px;
+}
+
+#headerArea .ham7.active .middle,
+#headerArea.mn_open .ham7 .middle {
+  stroke-dashoffset: 23px;
+}
+
+#headerArea .ham7.active .bottom,
+#headerArea.mn_open .ham7 .bottom {
+  /* 열린 상태는 보정 전 원본 수치로 되돌린다. */
+  stroke-dasharray: 40 161;
+  stroke-dashoffset: -83px;
+}
+/* 어두운 배경 위로 오른쪽 메뉴가 들어온다. */
+body.gnb_open {
+  position: fixed;
+  left: 0;
+  overflow: hidden;
+}
+
+#headerArea .modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .8);
+}
+
+#headerArea #gnb {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 20;
+  visibility: hidden;
+  width: 80%;
+  height: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  opacity: 0;
+  background: var(--color-white);
+}
+
+/* 서랍 안쪽 로고와 닫기 버튼 */
+/* 낮은 가로 화면에서는 각 영역을 찌그러뜨리지 않고 패널 전체를 스크롤한다. */
+#gnb > * { flex-shrink: 0; }
+
+#gnb .gnb_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+#gnb .gnb_logo img { display: block; width: 99px; }
+#gnb .gnb_close {
+  display: none;
+}
+#gnb .gnb_account { padding: 12px 18px 8px; }
+#gnb .gnb_account p {
+  font-size: var(--font-body-large-size);
+  font-weight: 700;
+  line-height: 1.5;
+}
+#gnb .top_menu { display: flex; margin-top: 6px; white-space: nowrap; }
+#gnb .top_menu li + li { display: flex; }
+#gnb .top_menu li + li::before {
+  content: '/';
+  margin: 0 10px;
+  color: var(--color-font-02);
+}
+#gnb .top_menu a {
+  color: var(--color-font-02);
+  font-size: var(--font-label-small-size);
+}
+#gnb .gnb_search {
+  display: flex;
+  align-items: center;
+  margin: 12px 18px 18px;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 7px;
+  background: var(--color-sub-01);
+}
+#gnb .gnb_search input {
+  width: 100%;
+  height: 42px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--color-font-01);
+  font-size: var(--font-label-small-size);
+}
+#gnb .gnb_search button {
+  width: 44px;
+  height: 42px;
+  border: 0;
+  background: none;
+  color: var(--color-main-02);
+  font-size: var(--font-h5-size);
+  cursor: pointer;
+}
+/* 왼쪽 1차 탭을 선택하면 오른쪽 2차 메뉴를 바꿔 보여준다. */
+#gnb .main_menu {
+  position: relative;
+  /* 네 개의 탭이 하단 링크와 겹치지 않도록 높이를 확보한다. */
+  min-height: 184px;
+  flex-shrink: 0;
+  flex-grow: 1;
+  border-top: 1px solid var(--color-light-gray);
+  background: var(--color-sub-01);
+}
+#gnb .main_menu > li > h3 { width: 36%; }
+#gnb .main_menu > li > h3 a {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  color: var(--color-main-02);
+  font-size: var(--font-navigation-depth-size);
+  font-weight: 700;
+  white-space: nowrap;
+}
+#gnb .main_menu > li.active > h3 a {
+  color: var(--color-main-01);
+  background: var(--color-white);
+  
+}
+#gnb .main_menu > li > ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 36%;
+  width: 64%;
+  height: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background: var(--color-white);
+}
+#gnb .main_menu > li.active > ul { display: block; }
+#gnb .main_menu > li > ul a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  border-bottom: 1px solid var(--color-light-gray);
+  color: var(--color-main-02);
+  font-size: var(--font-label-large-size);
+  font-weight: 500;
+}
+#gnb .main_menu > li > ul a::after {
+  content: '›';
+  color: var(--color-font-02);
+  font-size: var(--font-body-large-size);
+}
+#gnb .gnb_empty {
+  display: none;
+  padding: 18px;
+  color: var(--color-font-02);
+  font-size: var(--font-body-small-size);
+}
+#gnb .gnb_empty.show { display: block; }
+#gnb .gnb_policy {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  border-top: 1px solid var(--color-light-gray);
+}
+#gnb .gnb_policy a {
+  color: var(--color-font-03);
+  font-size: var(--font-label-small-size);
+}
+/* 푸터공통 */
+#footerArea {
+    background: var(--color-black);
+}
+
+#footerArea .footer_inner {
+    padding: 33px 6% 33px;
+}
+
+#footerArea .footer_logo img {
+    display: block;
+    width: 133px;
+}
+
+#footerArea .footer_link {
+    display: flex;
+    margin-top: 15px;
+}
+
+#footerArea .footer_link li + li {
+    margin-left: 14px;
+}
+
+#footerArea .footer_link a {
+    color: var(--color-white);
+    font-size: var(--font-label-small-size);
+    line-height: 1.55;
+}
+
+#footerArea .footer_link li:first-child a {
+    color: var(--color-main-01);
+    font-weight: 700;
+}
+
+#footerArea address {
+    margin-top: 15px;
+    color: var(--color-white);
+    font-size: var(--font-body-small-size);
+    font-style: normal;
+    line-height: 1.7;
+}
+
+#footerArea address a {
+    display: inline;
+    color: var(--color-white);
+}
+
+#footerArea .footer_top {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+#footerArea .sns {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+#footerArea .sns li + li {
+    margin-left: 8px;
+}
+
+#footerArea .sns img {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+#footerArea .select {
+    position: relative;
+    margin-top: 13px;
+}
+
+#footerArea .select .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--color-white);
+    color: var(--color-font-01);
+    font-family: var(--font-family-en);
+    font-size: var(--font-label-small-size);
+}
+
+#footerArea .select .arrow img {
+    width: 13px;
+}
+
+#footerArea .select .aList {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--color-light-gray);
+    background: var(--color-white);
+}
+
+#footerArea .select .aList a {
+    padding: 8px 10px;
+    color: var(--color-font-01);
+    font-size: var(--font-label-small-size);
+}
+
+#footerArea .copyright {
+    display: block;
+    margin: 20px auto;
+    color: var(--color-font-03);
+    font-family: var(--font-family-en);
+    font-size: var(--font-label-small-size);
+    line-height: 1.25;
+}
+
+
+
+/* ===== TOP BUTTON ===== */
+
+.top_move{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: var(--color-main-02);
+    border-radius: 50%;
+    z-index: 100;
+    display: none;
+}
+
+/* 로고 */
+
+.top_move img{
+    width: 20px;
+    height: auto;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 9px;
+    z-index: 1;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+/* 텍스트 */
+
+.top_move span{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 11px;
+    z-index: 1;
+    font-family: var(--font-family-en);
+    font-size: var(--font-label-small-size);
+    font-weight: 600;
+    color: var(--color-white);
+    line-height: 1;
+    display: block;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* ===== TOP BUTTON SCROLL PROGRESS ===== */
+
+/* SVG 전체 */
+.top_move .top_progress{
+    width: 60px;
+    height: 60px;
+    shape-rendering: geometricPrecision;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    overflow: visible;
+}
+
+
+/* 게이지 배경 */
+.top_move .progress_bg{
+    fill: none;
+    /* 진행 전의 원형 가이드선 */
+    stroke: rgba(255,255,255,.35);
+    stroke-width: 2;
+}
+
+/* 실제로 차오르는 게이지 */
+.top_move .progress_bar{
+    fill: none;
+    /* 스크롤할수록 채워지는 실제 진행선 */
+    stroke: var(--color-main-01);
+    stroke-width: 2;
+    stroke-linecap: round;
+    /* r = 28.5 원 둘레 = 약 179.1  */
+    stroke-dasharray: 179.1;
+    stroke-dashoffset: 179.1;
+    transition: stroke-dashoffset .1s linear;
+}
+
+
+
+
+
+/* 개인정보·이메일 약관 공통 모달: 메뉴 위에 표시하며 본문만 스크롤한다. */
+.footer_policy_modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    padding: 16px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.65);
+    overscroll-behavior: contain;
+}
+.footer_policy_inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 640px;
+    max-height: 100%;
+    margin: 0 auto;
+    padding: 24px 20px;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: var(--color-white);
+    box-shadow: 0 12px 40px rgba(0,0,0,.2);
+}
+.footer_policy_title {
+    flex-shrink: 0;
+    padding-right: 38px;
+    font-size: var(--font-h5-size);
+    font-weight: 700;
+    line-height: 1.5;
+}
+.footer_policy_close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    background: transparent;
+    color: var(--color-font-01);
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+}
+.footer_policy_scroll {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 20px;
+    padding-right: 6px;
+    color: var(--color-font-02);
+    font-size: var(--font-body-medium-size);
+    line-height: 1.8;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+.footer_policy_panel { display: none; }
+.footer_policy_panel p + p { margin-top: 14px; }
+.footer_policy_panel ul,
+.footer_policy_panel ol { margin: 12px 0; padding-left: 20px; }
+.footer_policy_panel ul li { list-style: disc; }
+.footer_policy_panel ol li { list-style: decimal; }
+.footer_policy_subtitle {
+    display: block;
+    margin: 24px 0 10px;
+    color: var(--color-font-01);
+    font-size: var(--font-h6-size);
+}
+.footer_policy_panel .policy_notice { padding: 14px; background: var(--color-sub-01); font-size: var(--font-body-small-size); }
+.footer_policy_panel .policy_date { margin-top: 24px; }
+.footer_policy_close:focus-visible,
+.footer_policy_scroll:focus-visible { outline: 2px solid var(--color-main-01); outline-offset: 2px; }
+@media (max-height: 450px) {
+    .footer_policy_modal { padding: 10px; }
+    .footer_policy_inner { padding: 18px; }
+    .footer_policy_scroll { margin-top: 14px; }
+}
